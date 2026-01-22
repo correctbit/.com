@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Toolz pro</title>
+   <link rel="icon" href="images/TOOLSPRO.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ================= RESET ================= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+    }
+
+    body {
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #000030 0%,
+    #070263 60%,
+    #05024a 100%
+  );
+  color: #ffffff;
+}
+
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+ 
+
+    .login {
+      background: #1a2433;
+      color: #ffffff;
+    }
+
+    .signup {
+      background: #2f80ff;
+      color: #ffffff;
+    }
+
+    /* ================= HERO ================= */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+      padding: 80px 64px;
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 520px;
+      color: #b9c4d3;
+      margin-bottom: 32px;
+      font-size: 16px;
+    }
+
+    .buttons {
+      margin-bottom: 50px;
+    }
+
+    .buttons button {
+      padding: 14px 26px;
+      border-radius: 28px;
+      border: none;
+      font-size: 15px;
+      margin-right: 16px;
+    }
+
+    .primary {
+      background: #2f80ff;
+      color: #ffffff;
+    }
+
+    .secondary {
+      background: #1a2433;
+      color: #ffffff;
+    }
+
+    /* ================= STATS ================= */
+    .stats {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+
+    .stats h2 {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .stats p {
+      font-size: 14px;
+      color: #b9c4d3;
+    }
+
+.phone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+}
+
+.phone img {
+  background: transparent;
+  box-shadow: none;        /* ❌ remove shadow */
+  border-radius: 0;        /* ❌ no card feel */
+  width: 100%;
+  max-width: 520px;        /* 📱 base size */
+  height: auto;
+}
+
+@media (min-width: 1024px) {
+  .phone img {
+    max-width: 680px;      /* 💻 desktop size */
+  }
+}
+
+@media (min-width: 1400px) {
+  .phone img {
+    max-width: 780px;      /* 🖥 large screens */
+  }
+}
+
+@media (min-width: 1024px) {
+  .phone img {
+    filter: drop-shadow(0 30px 80px rgba(0,0,0,0.45));
+  }
+}
+
+@keyframes floatPhone {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.phone img {
+  animation: floatPhone 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 900px) {
+      header {
+        padding: 20px 24px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 40px 24px;
+        text-align: center;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .buttons button {
+        margin-bottom: 12px;
+      }
+
+      .stats {
+        justify-content: center;
+      }
+    }
+  </style>
+
+  <style>
+.avatars {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  padding: 1.5px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    #7dd3fc,
+    #38bdf8
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: -10px;
+}
+
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #05080d; /* fallback */
+}
+
+.avatar:hover {
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
+  transform: translateY(-2px);
+  transition: 0.2s ease;
+}
+
+
+  </style>
+
+  <style>
+.partners {
+  margin-top: -80px; /* bring closer to hero */
+  padding: 40px 64px 80px;
+  text-align: center;
+  overflow: hidden;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.04),
+    transparent 70%
+  );
+}
+
+.partners-title {
+  font-size: 26px;
+  letter-spacing: 4px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+/* ================= CAROUSEL ================= */
+
+.partners-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.partners-carousel.two-row {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* TRACKS */
+
+.partners-track {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  width: max-content;
+}
+
+/* Row directions */
+.row-1 {
+  animation: scrollLeft 40s linear infinite;
+}
+
+.row-2 {
+  animation: scrollRight 45s linear infinite;
+}
+
+/* ================= LOGOS ================= */
+
+.partners-track img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.7;
+  filter: grayscale(100%);
+  transition: all 0.35s ease;
+}
+
+/* SOFT GLOW ON HOVER */
+.partners-track img:hover {
+  opacity: 1;
+  filter: grayscale(0%)
+    drop-shadow(0 0 12px rgba(56, 189, 248, 0.45))
+    drop-shadow(0 0 30px rgba(125, 211, 252, 0.35));
+  transform: scale(1.08);
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes scrollLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRight {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .partners {
+    margin-top: 20px;
+    padding: 30px 24px 60px;
+  }
+
+  .partners-title {
+    font-size: 22px;
+    margin-bottom: 30px;
+  }
+
+  .partners-carousel.two-row {
+    gap: 28px;
+  }
+
+  .partners-track {
+    gap: 50px;
+  }
+
+  .partners-track img {
+    height: 38px;
+  }
+}
+
+  </style>
+
+<style>
+/* ================= COLLECTIONS ================= */
+
+.collections {
+  padding: 100px 64px;
+  color: #fff;
+}
+
+.collections-header {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.collections-header .tab {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.6);
+  font-size: 22px;
+  cursor: pointer;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.collections-header .tab.active {
+  color: #fff;
+}
+
+.collections-header .tab.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #a3e635;
+}
+
+/* ================= CONTENT ================= */
+
+.collections-content {
+  display: none;
+}
+
+.collections-content.active {
+  display: block;
+}
+
+.collections-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+}
+
+/* ================= TABLE ================= */
+
+.collection-table {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.table-head {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  color: rgba(255,255,255,0.4);
+  font-size: 14px;
+  padding-bottom: 16px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+  will-change: transform;
+  transition:
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.35s ease;
+}
+
+.row:hover {
+  background: rgba(255,255,255,0.04);
+}
+
+/* ================= COLLECTION CELL ================= */
+
+.collection {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.collection img {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* ================= VALUE ANIMATION ================= */
+
+.value {
+  font-variant-numeric: tabular-nums;
+  transition: color 0.3s ease;
+}
+
+/* subtle pulse line */
+.row::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(163, 230, 53, 0.06),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.row.moving::after {
+  opacity: 1;
+}
+
+/* ================= FLIP + RANK ================= */
+
+.row.is-flipping {
+  transition:
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.35s ease;
+}
+
+.row.moving {
+  background-color: rgba(56, 189, 248, 0.06);
+}
+
+.rank {
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+/* ================= MISC ================= */
+
+.coming-soon {
+  opacity: 0.6;
+  padding: 40px 0;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .collections {
+    padding: 80px 24px;
+  }
+
+  .collections-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+</style>
+
+<style>
+.site-footer {
+  background: radial-gradient(circle at top right, #070263, #000018);
+  padding: 80px 64px;
+  color: #d1d5db;
+}
+
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 1.2fr;
+  gap: 80px;
+}
+
+.footer-col.brand .brand-text {
+  max-width: 320px;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.socials {
+  display: flex;
+  gap: 14px;
+}
+
+.socials a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  display: grid;
+  place-items: center;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.socials img {
+  width: 18px;
+  height: 18px;
+}
+
+.socials a:hover {
+  background: rgba(163,230,53,0.15);
+  transform: translateY(-2px);
+}
+
+.footer-col.links h4 {
+  font-size: 16px;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.footer-col.links a {
+  display: block;
+  margin-bottom: 12px;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.footer-col.links a:hover {
+  color: #a3e635;
+}
+
+.footer-col.download h4 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+.footer-col.download p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  max-width: 360px;
+}
+
+.store-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.store-buttons img {
+  height: 46px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.store-buttons a:hover img {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+}
+@media (max-width: 900px) {
+  .site-footer {
+    padding: 64px 24px;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+.footer-divider {
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #38bdf8,
+    #a3e635,
+    #8b5cf6,
+    transparent
+  );
+  background-size: 300% 100%;
+  animation: footerGlow 6s linear infinite;
+  opacity: 0.9;
+  filter: blur(0.3px);
+}
+
+@keyframes footerGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+.footer-divider {
+  box-shadow:
+    0 0 8px rgba(56,189,248,0.35),
+    0 0 16px rgba(163,230,53,0.25);
+}
+
+.footer-particles {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  pointer-events: none;
+  background: transparent;
+}
+
+#footerParticles {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.footer-particles::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 0, 24, 0.7)
+  );
+}
+</style>
+
+<style>
+/* ================= BASE HEADER ================= */
+.main-header {
+  position: sticky;
+  top: 20px;
+  z-index: 1000;
+  padding: 0 32px;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+
+  background: linear-gradient(
+    135deg,
+    #000030 0%,
+    #070263 60%,
+    #05024a 100%
+  );
+
+  backdrop-filter: blur(16px);
+  border-radius: 20px;
+  padding: 0 28px;
+
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.06),
+    0 20px 60px rgba(0,0,0,0.4);
+
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+.main-header.scrolled .header-inner {
+  box-shadow:
+    0 0 0 1px rgba(163,230,53,0.25),
+    0 30px 80px rgba(0,0,0,0.55);
+}
+
+.header-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.08),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+/* ================= LOGO ================= */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.logo img {
+  width: 32px;
+  height: 32px;
+}
+
+.logo span {
+  font-size: 18px;
+}
+
+/* ================= CLEAN FROSTED GLASS NAV ================= */
+
+.nav-links {
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  width: min(92%, 520px);
+
+  background: linear-gradient(
+    135deg,
+    #000030 0%,
+    #070263 60%,
+    #05024a 100%
+  );
+
+  border-radius: 18px;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.35s ease;
+}
+
+.nav-links.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.nav-links a:hover {
+  background: rgba(255,255,255,0.08);
+}
+.nav-links::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.06),
+    transparent 55%
+  );
+  pointer-events: none;
+}
+
+.nav-links.active {
+  box-shadow:
+    0 25px 60px rgba(56, 189, 248, 0.25),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+}
+
+
+/* ================= ACTIONS ================= */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Marketplace button */
+.icon-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.icon-btn a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  transition: background 0.3s ease;
+}
+
+.icon-btn a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* Login / Wallet button */
+.wallet-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #ffffff;
+  font-size: 14px;
+  text-decoration: none;
+
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+}
+
+.wallet-btn:hover {
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 0 18px rgba(192,132,252,0.45);
+  transform: translateY(-1px);
+}
+
+/* ================= MENU TOGGLE ================= */
+.menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.menu-toggle img {
+  width: 22px;
+  height: 22px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (min-width: 901px) {
+  /* Desktop still uses slide-down nav */
+}
+
+.icon-btn {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.icon-btn:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+</style>
+
+</head>
+<body>
+
+  <header class="main-header">
+  <div class="header-inner">
+
+    <div class="logo">
+      <img src="images/TOOLSPRO.png" alt="Toolz Pro Logo">
+      <span>Toolz Pro</span>
+    </div>
+
+    <!-- SLIDE MENU -->
+    <nav class="nav-links" id="navMenu">
+      <a href="#">Home</a>
+      <a href="#">Marketplace</a>
+      <a href="#">Working Tools</a>
+      <a href="#">eSIMs Activation</a>
+    </nav>
+
+    <!-- ACTIONS -->
+    <div class="header-actions">
+      <!-- THIS IS NOW THE MENU TOGGLE -->
+      <a href="#" class="icon-btn" id="menuToggle">Marketplace</a>
+
+      <a href="home.html" class="wallet-btn">Login</a>
+    </div>
+
+  </div>
+</header>
+
+  <section class="hero">
+    <div>
+      <h1>Welcome to <br>Toolz Pro</h1>
+
+      <p>
+        “Welcome to the ToolzPro experience — everything you need, from working 
+        tools to gifts and website designs, made simple and reliable.”
+      </p>
+
+      <div class="buttons">
+        <button class="primary" id="getStartedBtn">Get Started</button>
+        <button class="secondary">Learn more</button>
+      </div>
+
+      <div class="stats">
+        <div class="avatars">
+  <span class="avatar">
+    <img src="images/mock_1.png" alt="User">
+  </span>
+  <span class="avatar">
+    <img src="images/mock_2.png" alt="User">
+  </span>
+  <span class="avatar">
+    <img src="images/mock_3.png" alt="User">
+  </span>
+</div>
+
+        <div>
+          <h2 id="counter" data-target="155000">+0</h2>
+          <p>Thousands of people trust our platform</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phone">
+      <img src="images/model_1.png" alt="Bank App UI">
+    </div>
+  </section>
+
+<section class="partners">
+  <h2 class="partners-title">OUR PARTNERS</h2>
+
+  <div class="partners-carousel two-row">
+    <!-- ROW 1 -->
+    <div class="partners-track row-1">
+      <img src="images/logistics_1.png" alt="Partner">
+      <img src="images/logistics_2.png" alt="Partner">
+      <img src="images/logistics_3.png" alt="Partner">
+      <img src="images/logistics_4.png" alt="Partner">
+      <img src="images/logistics_5.png" alt="Partner">
+      <img src="images/logistics_6.png" alt="Partner">
+
+      <!-- duplicate -->
+      <img src="images/logistics_1.png" alt="Partner">
+      <img src="images/logistics_2.png" alt="Partner">
+      <img src="images/logistics_3.png" alt="Partner">
+      <img src="images/logistics_4.png" alt="Partner">
+      <img src="images/logistics_5.png" alt="Partner">
+      <img src="images/logistics_6.png" alt="Partner">
+    </div>
+
+    <!-- ROW 2 -->
+    <div class="partners-track row-2">
+      <img src="images/logistics_6.png" alt="Partner">
+      <img src="images/logistics_5.png" alt="Partner">
+      <img src="images/logistics_4.png" alt="Partner">
+      <img src="images/logistics_3.png" alt="Partner">
+      <img src="images/logistics_2.png" alt="Partner">
+      <img src="images/logistics_1.png" alt="Partner">
+
+      <!-- duplicate -->
+      <img src="images/logistics_6.png" alt="Partner">
+      <img src="images/logistics_5.png" alt="Partner">
+      <img src="images/logistics_4.png" alt="Partner">
+      <img src="images/logistics_3.png" alt="Partner">
+      <img src="images/logistics_2.png" alt="Partner">
+      <img src="images/logistics_1.png" alt="Partner">
+    </div>
+  </div>
+</section>
+
+<section class="collections">
+  <div class="collections-header">
+    <button class="tab active" data-tab="popular">Popular</button>
+    <button class="tab" data-tab="top">Top</button>
+  </div>
+
+  <div class="collections-content active" id="popular" data-market="popular">
+
+  <div class="collections-grid">
+
+    <!-- LEFT TABLE -->
+    <div class="collection-table">
+      <div class="table-head">
+        <span>Collection</span>
+        <span>Ground Cost</span>
+        <span>Volume</span>
+      </div>
+
+      <div class="row">
+        <span class="collection">
+          <img src="images/EXP_1.png" alt="">
+          Paint colorst
+        </span>
+        <span class="value" data-value="8000000">8 M NGN</span>
+        <span class="rank">NO 1</span>
+      </div>
+
+      <div class="row">
+        <span class="collection">
+          <img src="images/EXP_2.png" alt="">
+          Gifty factiner
+        </span>
+        <span class="value" data-value="7300000">7.3 M NGN</span>
+        <span class="rank">NO 2</span>
+      </div>
+
+      <div class="row">
+        <span class="collection">
+          <img src="images/EXP_3.png" alt="">
+          Outline hair
+        </span>
+        <span class="value" data-value="7100000">7.1 M NGN</span>
+        <span class="rank">NO 3</span>
+      </div>
+
+      <div class="row">
+        <span class="collection">
+          <img src="images/EXP_4.png" alt="">
+          terater fish
+        </span>
+        <span class="value" data-value="6800000">6.8 M NGN</span>
+        <span class="rank">NO 4</span>
+      </div>
+    </div>
+
+    <!-- RIGHT TABLE -->
+    <div class="collection-table">
+      <div class="table-head">
+        <span>Collection</span>
+        <span>Ground Cost</span>
+        <span>Volume</span>
+      </div>
+
+      <div class="row">
+        <span class="collection">
+          <img src="images/EXP_5.png" alt="">
+          Grand shaper
+        </span>
+        <span class="value" data-value="6000000">6 M NGN</span>
+        <span class="rank">NO 5</span>
+      </div>
+
+      <div class="row">
+        <span class="collection">
+          <img src="images/EXP_6.png" alt="">
+          Catring paint
+        </span>
+        <span class="value" data-value="5500000">5.5 M NGN</span>
+        <span class="rank">NO 6</span>
+      </div>
+
+      <div class="row">
+        <span class="collection">
+          <img src="images/EXP_7.png" alt="">
+          Yellow leaf
+        </span>
+        <span class="value" data-value="1300000">1.3 M NGN</span>
+        <span class="rank">NO 7</span>
+      </div>
+
+      <div class="row">
+        <span class="collection">
+          <img src="images/EXP_8.png" alt="">
+          Nenon man
+        </span>
+        <span class="value" data-value="935000">935 K NGN</span>
+        <span class="rank">NO 8</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  <div class="collections-content" id="top" data-market="top">
+
+  <div class="collections-grid">
+
+    <!-- LEFT TABLE -->
+    <div class="collection-table">
+      <div class="table-head">
+        <span>Collection</span>
+        <span>Ground Cost</span>
+        <span>Volume</span>
+      </div>
+
+      <div class="row">
+        <span class="collection"><img src="images/EXP_1.png"> Urban metals</span>
+        <span class="value" data-value="9200000">9.2 M NGN</span>
+        <span class="rank">NO 1</span>
+      </div>
+
+      <div class="row">
+        <span class="collection"><img src="images/EXP_2.png"> Neon tools</span>
+        <span class="value" data-value="8800000">8.8 M NGN</span>
+        <span class="rank">NO 2</span>
+      </div>
+
+      <div class="row">
+        <span class="collection"><img src="images/EXP_3.png"> Prime kit</span>
+        <span class="value" data-value="8400000">8.4 M NGN</span>
+        <span class="rank">NO 3</span>
+      </div>
+
+      <div class="row">
+        <span class="collection"><img src="images/EXP_4.png"> Craft edge</span>
+        <span class="value" data-value="8100000">8.1 M NGN</span>
+        <span class="rank">NO 4</span>
+      </div>
+
+      <div class="row">
+        <span class="collection"><img src="images/EXP_5.png"> Steel lab</span>
+        <span class="value" data-value="7900000">7.9 M NGN</span>
+        <span class="rank">NO 5</span>
+      </div>
+
+      <div class="row">
+        <span class="collection"><img src="images/EXP_6.png"> Power forge</span>
+        <span class="value" data-value="7600000">7.6 M NGN</span>
+        <span class="rank">NO 6</span>
+      </div>
+
+      <div class="row">
+        <span class="collection"><img src="images/EXP_7.png"> Tool syndicate</span>
+        <span class="value" data-value="7200000">7.2 M NGN</span>
+        <span class="rank">NO 7</span>
+      </div>
+
+      <div class="row">
+        <span class="collection"><img src="images/EXP_8.png"> Core mechanics</span>
+        <span class="value" data-value="6900000">6.9 M NGN</span>
+        <span class="rank">NO 8</span>
+      </div>
+
+      <div class="row">
+        <span class="collection"><img src="images/EXP_1.png"> Atlas supply</span>
+        <span class="value" data-value="6600000">6.6 M NGN</span>
+        <span class="rank">NO 9</span>
+      </div>
+
+      <div class="row">
+        <span class="collection"><img src="images/EXP_2.png"> Iron lane</span>
+        <span class="value" data-value="6300000">6.3 M NGN</span>
+        <span class="rank">NO 10</span>
+      </div>
+    </div>
+
+    <!-- RIGHT TABLE -->
+    <div class="collection-table">
+      <div class="table-head">
+        <span>Collection</span>
+        <span>Ground Cost</span>
+        <span>Volume</span>
+      </div>
+
+      <div class="row">
+        <span class="collection"><img src="images/EXP_3.png"> Spark kits</span>
+        <span class="value" data-value="6000000">6 M NGN</span>
+        <span class="rank">NO 11</span>
+      </div>
+
+      <div class="row">
+        <span class="collection"><img src="images/EXP_4.png"> Build vault</span>
+        <span class="value" data-value="5700000">5.7 M NGN</span>
+        <span class="rank">NO 12</span>
+      </div>
+
+      <div class="row">
+        <span class="collection"><img src="images/EXP_5.png"> Heavy craft</span>
+        <span class="value" data-value="5400000">5.4 M NGN</span>
+        <span class="rank">NO 13</span>
+      </div>
+
+      <div class="row">
+        <span class="collection"><img src="images/EXP_6.png"> Forge x</span>
+        <span class="value" data-value="5100000">5.1 M NGN</span>
+        <span class="rank">NO 14</span>
+      </div>
+
+      <div class="row">
+        <span class="collection"><img src="images/EXP_7.png"> Tool wave</span>
+        <span class="value" data-value="4800000">4.8 M NGN</span>
+        <span class="rank">NO 15</span>
+      </div>
+
+      <div class="row">
+        <span class="collection"><img src="images/EXP_8.png"> Bolt union</span>
+        <span class="value" data-value="4500000">4.5 M NGN</span>
+        <span class="rank">NO 16</span>
+      </div>
+
+      <div class="row">
+        <span class="collection"><img src="images/EXP_1.png"> Workyard</span>
+        <span class="value" data-value="4200000">4.2 M NGN</span>
+        <span class="rank">NO 17</span>
+      </div>
+
+      <div class="row">
+        <span class="collection"><img src="images/EXP_2.png"> Maker grid</span>
+        <span class="value" data-value="3900000">3.9 M NGN</span>
+        <span class="rank">NO 18</span>
+      </div>
+
+      <div class="row">
+        <span class="collection"><img src="images/EXP_3.png"> Proto lab</span>
+        <span class="value" data-value="3600000">3.6 M NGN</span>
+        <span class="rank">NO 19</span>
+      </div>
+
+      <div class="row">
+        <span class="collection"><img src="images/EXP_4.png"> Utility hub</span>
+        <span class="value" data-value="3300000">3.3 M NGN</span>
+        <span class="rank">NO 20</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<div class="footer-particles">
+  <canvas id="footerParticles"></canvas>
+</div>
+<div class="footer-divider"></div>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col brand">
+      <p class="brand-text">
+        ToolzPro
+      </p>
+      <div class="socials">
+        <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+        <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
+        <a href="#"><img src="images/whatsapp.png" alt="LinkedIn"></a>
+        <a href="#"><img src="images/gmail.png" alt="LinkedIn"></a>
+      </div>
+    </div>
+    <div class="footer-col links">
+      <h4>Benefits</h4>
+      <a href="#">How It Works</a>
+      <a href="#">Pricing</a>
+      <a href="#">FAQ</a>
+    </div>
+    <div class="footer-col download">
+      <h4>Download Our Apps</h4>
+      <p>
+        Download ToolzPro to easily manage, trade, and secure your Working Tools — all in one smart app.
+      </p>
+
+      <div class="store-buttons">
+        <a href="#">
+          <img src="images/app-store.png" alt="App Store">
+        </a>
+        <a href="#">
+          <img src="images/play-store.png" alt="Google Play">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script>
+  const counter = document.getElementById("counter");
+  const target = +counter.dataset.target;
+  const duration = 1200; // animation duration in ms
+  let hasAnimated = false;
+
+  function animateCounter() {
+    let start = 0;
+    const startTime = performance.now();
+
+    function update(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+const eased = 1 - Math.pow(1 - progress, 3);
+
+
+      const value = Math.floor(progress * target);
+      counter.textContent = `+${Math.floor(value / 1000)}K`;
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounter();
+        }
+      });
+    },
+    { threshold: 0.6 }
+  );
+
+  observer.observe(counter);
+</script>
+
+<script>
+  const partnerLogos = document.querySelectorAll(".partners-grid img");
+
+  const partnerObserver = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = "0.7";
+          entry.target.style.transform = "translateY(0)";
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  partnerLogos.forEach(logo => {
+    logo.style.opacity = "0";
+    logo.style.transform = "translateY(20px)";
+    logo.style.transition = "all 0.6s ease";
+    partnerObserver.observe(logo);
+  });
+</script>
+
+<script>
+  const track = document.querySelector(".partners-track");
+
+  track.addEventListener("mouseenter", () => {
+    track.style.animationPlayState = "paused";
+  });
+
+  track.addEventListener("mouseleave", () => {
+    track.style.animationPlayState = "running";
+  });
+</script>
+
+<script>
+  const tabs = document.querySelectorAll(".tab");
+  const contents = document.querySelectorAll(".collections-content");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      tabs.forEach(t => t.classList.remove("active"));
+      contents.forEach(c => c.classList.remove("active"));
+
+      tab.classList.add("active");
+      document.getElementById(tab.dataset.tab).classList.add("active");
+    });
+  });
+</script>
+
+<script>
+const formatNGN = (num) => {
+  if (num >= 1_000_000) return (num / 1_000_000).toFixed(1) + " M NGN";
+  if (num >= 1_000) return (num / 1_000).toFixed(0) + " K NGN";
+  return num + " NGN";
+};
+
+function animateValue(el, start, end, duration = 1200) {
+  const startTime = performance.now();
+
+  function update(now) {
+    const progress = Math.min((now - startTime) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const value = Math.floor(start + (end - start) * eased);
+    el.textContent = formatNGN(value);
+    if (progress < 1) requestAnimationFrame(update);
+  }
+
+  requestAnimationFrame(update);
+}
+
+function getActiveMarket() {
+  return document.querySelector(".collections-content.active");
+}
+
+function getRowsInMarket(market) {
+  return Array.from(market.querySelectorAll(".collection-table .row"));
+}
+
+function getTablesInMarket(market) {
+  return market.querySelectorAll(".collection-table");
+}
+
+function flipAnimate(rows, changeDOM) {
+  const first = new Map();
+
+  rows.forEach(row => first.set(row, row.getBoundingClientRect()));
+
+  changeDOM();
+
+  rows.forEach(row => {
+    const last = row.getBoundingClientRect();
+    const firstBox = first.get(row);
+    const dx = firstBox.left - last.left;
+    const dy = firstBox.top - last.top;
+
+    if (dx || dy) {
+      row.style.transform = `translate(${dx}px, ${dy}px)`;
+      row.classList.add("is-flipping");
+
+      requestAnimationFrame(() => {
+        row.style.transform = "";
+      });
+
+      row.addEventListener(
+        "transitionend",
+        () => row.classList.remove("is-flipping"),
+        { once: true }
+      );
+    }
+  });
+}
+
+function updateMarket(market) {
+  const rows = getRowsInMarket(market);
+
+  rows.forEach(row => {
+    const valueEl = row.querySelector(".value");
+    const current = parseInt(valueEl.dataset.value);
+
+    const delta = Math.floor(current * (Math.random() * 0.06 - 0.03));
+    const next = Math.max(current + delta, 200000);
+
+    row.classList.add("moving");
+    animateValue(valueEl, current, next);
+    valueEl.dataset.value = next;
+
+    setTimeout(() => row.classList.remove("moving"), 600);
+  });
+}
+
+function reshuffleMarket(market) {
+  const rows = getRowsInMarket(market);
+  const tables = getTablesInMarket(market);
+
+  rows.sort((a, b) =>
+    parseInt(b.querySelector(".value").dataset.value) -
+    parseInt(a.querySelector(".value").dataset.value)
+  );
+
+  flipAnimate(rows, () => {
+    rows.forEach((row, index) => {
+      row.querySelector(".rank").textContent = `NO ${index + 1}`;
+      tables[index < rows.length / 2 ? 0 : 1].appendChild(row);
+    });
+  });
+}
+
+window.addEventListener("load", () => {
+  document.querySelectorAll(".collections-content").forEach(market => {
+    market.querySelectorAll(".value").forEach(el => {
+      const target = parseInt(el.dataset.value);
+      el.textContent = "0 NGN";
+      animateValue(el, 0, target, 1200);
+    });
+  });
+});
+
+setInterval(() => {
+  const activeMarket = getActiveMarket();
+  if (!activeMarket) return;
+
+  updateMarket(activeMarket);
+  setTimeout(() => reshuffleMarket(activeMarket), 1400);
+}, 4500);
+</script>
+
+<script>
+(() => {
+  const canvas = document.getElementById("footerParticles");
+  const ctx = canvas.getContext("2d");
+
+  let particles = [];
+  let width, height;
+
+  function resize() {
+    width = canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+    height = canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+  }
+
+  window.addEventListener("resize", resize);
+  resize();
+
+  const colors = [
+    "rgba(56,189,248,0.6)",   // blue
+    "rgba(163,230,53,0.5)",   // green
+    "rgba(139,92,246,0.5)"    // violet
+  ];
+
+  class Particle {
+    constructor() {
+      this.reset();
+    }
+
+    reset() {
+      this.x = Math.random() * canvas.offsetWidth;
+      this.y = Math.random() * -height;
+      this.size = Math.random() * 2 + 1;
+      this.speed = Math.random() * 0.4 + 0.2;
+      this.opacity = Math.random() * 0.6 + 0.2;
+      this.color = colors[Math.floor(Math.random() * colors.length)];
+      this.drift = Math.random() * 0.4 - 0.2;
+    }
+
+    update() {
+      this.y += this.speed;
+      this.x += this.drift;
+
+      if (this.y > height + 20) {
+        this.reset();
+      }
+    }
+
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = this.color;
+      ctx.fill();
+    }
+  }
+
+  function init(count = 60) {
+    particles = [];
+    for (let i = 0; i < count; i++) {
+      particles.push(new Particle());
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    particles.forEach(p => {
+      p.update();
+      p.draw();
+    });
+    requestAnimationFrame(animate);
+  }
+
+  init();
+  animate();
+})();
+</script>
+
+<script>
+  const header = document.querySelector(".main-header");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 20) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  });
+</script>
+
+
+<script>
+  const menuToggle = document.getElementById("menuToggle");
+  const navMenu = document.getElementById("navMenu");
+
+  menuToggle.addEventListener("click", (e) => {
+    e.preventDefault();
+    navMenu.classList.toggle("active");
+  });
+
+  // Optional: close menu when clicking a link
+  navMenu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      navMenu.classList.remove("active");
+    });
+  });
+
+  // Optional: close menu when clicking outside
+  document.addEventListener("click", (e) => {
+    if (
+      !navMenu.contains(e.target) &&
+      !menuToggle.contains(e.target)
+    ) {
+      navMenu.classList.remove("active");
+    }
+  });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Home</title>
+<link rel="icon" href="images/TOOLSPRO.png">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: #f6f7f9;
+  color: #1f2937;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 24px;
+}
+
+.section {
+  margin-bottom: 48px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.section-header a {
+  font-size: 14px;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.section-header a:hover {
+  text-decoration: underline;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.12);
+}
+
+.card img {
+  width: 100%;
+  height: 160px; 
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+  transition: transform 0.35s ease;
+  aspect-ratio: 1 / 1;
+}
+
+.card:hover img {
+  transform: scale(1.08);
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 6px;
+}
+
+.desc {
+  font-size: 14px;
+  font-style: italic;
+  color: #6b7280;
+  line-height: 1.4;
+}
+.desc {
+  min-height: 32px;
+}
+
+.rating {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  background: linear-gradient(
+    120deg,
+    #facc15,
+    #fde68a,
+    #f59e0b,
+    #fde68a,
+    #facc15
+  );
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: goldShine 4s linear infinite;
+  text-shadow: 0 0 6px rgba(245,158,11,0.35);
+
+}
+
+@keyframes goldShine {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+
+.price {
+  font-size: 15px;
+  font-weight: 700;
+  margin-top: auto;
+}
+
+.add-to-cart {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  padding: 10px 12px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+.card:hover .add-to-cart {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (hover: none) {
+  .add-to-cart {
+    opacity: 1;
+    transform: translateY(0);
+    position: static;
+    margin-top: 8px;
+  }
+}
+</style>
+
+<style>
+.img-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.img-wrap img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+.img-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.35),
+    transparent
+  );
+  transform: skewX(-20deg);
+  animation: shine 9s ease-in-out infinite;
+}
+
+/* Animation */
+@keyframes shine {
+  0% {
+    left: -120%;
+  }
+  60% {
+    left: -120%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+
+</style>
+
+<style>
+  /* HEADER */
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  z-index: 1000;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: auto;
+  height: 100%;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* LOGO */
+.logo img {
+  height: 32px;
+}
+
+/* SEARCH */
+.search-bar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f1f3f6;
+  padding: 10px 14px;
+  border-radius: 999px;
+}
+
+.search-bar img {
+  width: 18px;
+  opacity: 0.6;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  font-size: 14px;
+}
+
+/* ACTIONS */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 14px;
+}
+
+.header-actions img {
+  width: 18px;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.location small {
+  display: block;
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.location span {
+  font-weight: 600;
+}
+
+/* DIVIDER */
+.divider {
+  width: 1px;
+  height: 22px;
+  background: rgba(0,0,0,0.1);
+}
+
+/* COUNTRY */
+.country {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.country img {
+  width: 20px;
+  border-radius: 3px;
+}
+
+/* CART */
+.cart {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cart .badge {
+  position: absolute;
+  top: -6px;
+  left: 10px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 999px;
+}
+
+/* SIGN IN */
+.signin {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* OFFSET CONTENT BELOW HEADER */
+.container {
+  padding-top: 96px;
+}
+
+</style>
+
+<style>
+.search-bar {
+  position: relative;
+}
+
+.search-bar.active {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.search-suggestions {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  overflow: hidden;
+  display: none;
+  z-index: 999;
+}
+
+.search-suggestions.active {
+  display: block;
+}
+
+.search-item {
+  padding: 12px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.search-item:hover {
+  background: #f1f5f9;
+}
+
+.search-item small {
+  display: block;
+  font-size: 11px;
+  color: #6b7280;
+}
+
+@media (max-width: 768px) {
+
+  .divider {
+    display: none;
+  }
+
+  .signin {
+    display: none;
+  }
+
+  .header-inner {
+    gap: 10px;
+  }
+
+  .search-bar {
+    flex: 0;
+    width: 40px;
+    padding: 10px;
+    justify-content: center;
+    cursor: pointer;
+    transition: width 0.35s ease, flex 0.35s ease;
+  }
+
+  .search-bar input {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .search-bar.active {
+    flex: 1;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .search-bar.active input {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+@media (max-width: 768px) {
+
+  .search-bar.active {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    width: auto;
+    flex: none;
+    justify-content: flex-start;
+    z-index: 1000;
+  }
+
+  .search-bar.active input {
+    width: 100%;
+    font-size: 16px; 
+  }
+}
+
+@media (max-width: 768px) {
+  .search-bar.active ~ * {
+    opacity: 0.4;
+  }
+}
+
+.search-loader {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #e5e7eb;
+  border-top: 2px solid #2563eb;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-left: 8px;
+  display: none;
+}
+
+.search-bar.loading .search-loader {
+  display: block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+</style>
+
+<style>
+
+.success-popup {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  min-width: 320px;
+  max-width: 90%;
+  background: #eafff4;
+  border: 1px solid #86efac;
+  color: #166534;
+  padding: 14px 18px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.35s ease;
+  z-index: 9999;
+}
+
+.success-popup img {
+  width: 20px;
+  height: 20px;
+}
+
+.success-popup .close-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #166534;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.success-popup.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+</style>
+
+<style>
+.brand-explore {
+  padding: 32px 24px;
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 40px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.brand-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 18px;
+  margin-bottom: 32px;
+}
+
+.brand-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px 14px 18px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.brand-card img {
+  width: 100%;
+  max-width: 140px;
+  height: 140px;
+  object-fit: contain;
+  margin: 0 auto 12px;
+  transition: transform 0.3s ease;
+}
+
+.brand-card span {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.brand-card small {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+@media (hover: hover) {
+  .brand-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+  }
+
+  .brand-card:hover img {
+    transform: scale(1.08);
+  }
+}
+
+/* ================= PROMO GRID ================= */
+.promo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.promo {
+  position: relative;
+  border-radius: 16px;
+  padding: 20px;
+  overflow: hidden;
+  color: #fff;
+}
+
+.promo img {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  max-width: 120px;
+}
+
+.promo button {
+  background: #fff;
+  color: #111;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+.promo.large {
+  grid-column: span 2;
+}
+
+/* Promo colors */
+.blue { background: linear-gradient(135deg, #2563eb, #38bdf8); }
+.purple { background: linear-gradient(135deg, #9333ea, #ec4899); }
+.red { background: linear-gradient(135deg, #ef4444, #fb7185); }
+
+@media (max-width: 768px) {
+  .brand-grid {
+    grid-template-columns: repeat(3, 1fr); /* ✅ 3 cards per row */
+    gap: 12px;
+  }
+
+  .brand-card img {
+    height: 40px;
+    max-width: 40px;
+  }
+
+  .promo-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .promo.large {
+    grid-column: span 2;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .brand-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .brand-card img {
+    height: 180px;
+    max-width: 180px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .brand-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .brand-card img {
+    height: 200px;
+    max-width: 200px;
+  }
+}
+
+</style>
+
+<style>
+.image-slider {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 360px;
+  margin: 32px auto;
+  overflow: hidden;
+  background: transparent;
+  margin-top: -40px;
+  margin-bottom: -30px;
+}
+
+.image-slider img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.06);
+  transition:
+    opacity 1.2s ease-in-out,
+    transform 4.5s ease;
+  will-change: opacity, transform;
+}
+
+.image-slider img.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .image-slider {
+    height: 260px;
+  }
+}
+
+</style>
+
+<style>
+.categories {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 16px;
+  margin-bottom: -40px;
+}
+
+.categories-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.categories-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.categories-header a {
+  font-size: 13px;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.categories-wrap {
+  position: relative;
+}
+
+.categories-track {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 4px;
+  scrollbar-width: none;
+}
+
+.categories-track::-webkit-scrollbar {
+  display: none;
+}
+
+.category-card {
+  min-width: 96px;
+  text-align: center;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.category-card img {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #f1f5f9;
+  padding: 10px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.4),
+    0 8px 20px rgba(0,0,0,0.12);
+}
+
+.category-card span {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+@media (hover: hover) {
+  .category-card:hover img {
+    transform: translateY(-4px) scale(1.06);
+    box-shadow:
+      inset 0 0 0 1px rgba(255,255,255,0.6),
+      0 14px 30px rgba(0,0,0,0.18);
+  }
+}
+
+@media (max-width: 768px) {
+  .categories-track {
+    gap: 8px;
+  }
+
+  .category-card {
+    min-width: 110px;
+  }
+
+  .category-card img {
+    width: 92px;
+    height: 92px;
+  }
+
+  .category-card span {
+    font-size: 13px;
+  }
+}
+</style>
+
+<style>
+  .footer {
+  background: #f8fafc;
+  padding: 40px 16px 20px;
+  font-family: system-ui, sans-serif;
+}
+
+/* ================= FEATURES ================= */
+.footer-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-bottom: 40px;
+}
+
+.feature {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: #fff;
+  padding: 14px 16px;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+}
+
+.feature img {
+  width: 32px;
+}
+
+.feature strong {
+  display: block;
+  font-size: 14px;
+}
+
+.feature span {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* ================= GRID ================= */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.footer-grid h4 {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.footer-grid a {
+  display: block;
+  font-size: 13px;
+  color: #475569;
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+
+.footer-grid a:hover {
+  color: #2563eb;
+}
+
+/* ================= BOTTOM ================= */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.payments,
+.social {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.payments img,
+.social img {
+  height: 22px;
+  opacity: 0.85;
+}
+
+/* ================= COPYRIGHT ================= */
+.footer-copy {
+  margin-top: 18px;
+  font-size: 12px;
+  text-align: center;
+  color: #64748b;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .footer-features {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+
+  <header class="main-header">
+  <div class="header-inner">
+    <div class="logo">
+      <img src="images/TOOLSPRO_BLUE.png" alt="ToolzPro Logo"></div>
+
+    <div class="search-bar">
+      <img src="images/search.png" alt="Search">
+      <input type="text" placeholder="Search for any product or brand">
+      <div class="search-suggestions"></div>
+      <div class="search-loader"></div>
+    </div>
+
+    <div class="header-actions">
+      <div class="location">
+        <img src="images/location.png" alt="Location">
+        <div>
+          <small>Delivering to</small> </div>
+      </div>
+      <div class="divider"></div>
+      <div class="country">
+        <img src="images/nigeria_flag.png" alt="NG">
+        <span>NG</span> </div>
+
+      <div class="divider"></div>
+      <div class="cart">
+        <img src="images/cart.png" alt="Cart">
+        <span class="badge">2</span> <span>Cart</span> </div>
+
+      <div class="divider"></div>
+      <div class="signin">
+        <img src="images/user.png" alt="User">
+        <span>Sign In</span> </div>
+
+    </div>
+  </div>
+</header>
+
+<section class="brand-explore">
+  <h2 class="section-title">Explore Official Brand Stores</h2>
+  <div class="brand-grid">
+    <div class="brand-card">
+      <img src="images/key_1.png" alt="car key">
+      <span>Car Key</span>
+      <small>Delivery within 24 hours</small>
+    </div>
+
+    <div class="brand-card">
+      <img src="images/teddy_1.png" alt="Teddy Bear">
+      <span>Teddy Bear</span>
+      <small>Delivery within 24 hours</small>
+    </div>
+
+    <div class="brand-card">
+      <img src="images/frame_2.png" alt="Photo Frame">
+      <span>Photo Frame</span>
+      <small>Delivery within 24 hours</small>
+    </div>
+
+    <div class="brand-card">
+      <img src="images/ring.png" alt="Jewelry">
+      <span>Luxury Jewelry</span>
+      <small>Delivery within 24 hours</small>
+    </div>
+
+    <div class="brand-card">
+      <img src="images/candle.png" alt="Candle">
+      <span>Candle</span>
+      <small>Delivery within 24 hours</small>
+    </div>
+
+    <div class="brand-card">
+      <img src="images/perfume.png" alt="Perfumes">
+      <span>Perfumes</span>
+      <small>Delivery within 24 hours</small>
+    </div>
+
+    <div class="brand-card">
+      <img src="images/gift.png" alt="Gifts">
+      <span>Gifts Items</span>
+      <small>Delivery within 24 hours</small>
+    </div>
+
+    <div class="brand-card">
+      <img src="images/food.png" alt="Food">
+      <span>Food & Drinks</span>
+      <small>Delivery within 24 hours</small>
+    </div>
+  </div>
+</section>
+
+  <section class="image-slider">
+  <img src="images/show_1.png" class="slide active" alt="">
+  <img src="images/show_2.png" class="slide" alt="">
+  <img src="images/show_3.png" class="slide" alt="">
+  <img src="images/show_4.png" class="slide" alt="">
+  <img src="images/show_5.png" class="slide" alt="">
+</section>
+
+<section class="categories">
+  <div class="categories-header">
+    <h3>Possible Countries</h3>
+    <a href="#">View All ›</a>
+  </div>
+
+  <div class="categories-wrap">
+    <div class="categories-track">
+      <div class="category-card">
+        <img src="images/uk_flaq.png" alt="UK">
+        <span>UK</span>
+      </div>
+
+      <div class="category-card">
+        <img src="images/usa_flaq.png" alt="USA">
+        <span>USA</span>
+      </div>
+
+      <div class="category-card">
+        <img src="images/mexican.png" alt="Mexico">
+        <span>Mexico</span>
+      </div>
+
+      <div class="category-card">
+        <img src="images/south_korea.png" alt="south korea">
+        <span>south korea</span>
+      </div>
+
+      <div class="category-card">
+        <img src="images/germany.png" alt="Germany">
+        <span>Germany</span>
+      </div>
+
+      <div class="category-card">
+        <img src="images/japan.png" alt="Japan">
+        <span>Japan</span>
+      </div>
+
+      <div class="category-card">
+        <img src="images/italy.png" alt="Italy">
+        <span>Italy</span>
+      </div>
+
+      <div class="category-card">
+        <img src="images/thailand.png" alt="Thailand">
+        <span>Thailand</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="section">
+    <div class="section-header">
+      <h2>Bestseller in All Items</h2>
+      <a href="#">View All</a>
+    </div>
+
+    <div class="grid">
+
+  <div class="card">
+    <div class="img-wrap">
+      <img src="items/teddy_1.png" alt="teddy">
+    </div>
+    <div class="title">Teddy Bear</div>
+    <div class="desc">Soft handmade plush toy, perfect for gifting.</div>
+    <div class="rating">★★★★☆</div>
+    <div class="price">2.40 NGN</div>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <div class="img-wrap">
+      <img src="items/carkey_1.png" alt="Car Key">
+    </div>
+    <div class="title">Car Key</div>
+    <div class="desc">Stylish custom key accessory designed for everyday elegance.</div>
+    <div class="rating">★★★★☆</div>
+    <div class="price">0.75 NGN</div>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <div class="img-wrap">
+      <img src="items/frame_1.png" alt="frames">
+    </div>
+    <div class="title">Custom Photo Frames</div>
+    <div class="desc">Beautifully crafted frames to preserve your cherished memories.</div>
+    <div class="rating">★★★★☆</div>
+    <div class="price">2.40 NGN</div>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <div class="img-wrap">
+      <img src="items/ring_3.png" alt="Jewelry">
+    </div>
+    <div class="title">Personalized Jewelry</div>
+    <div class="desc">Elegant custom jewelry made to express love and individuality.</div>
+    <div class="rating">★★★★☆</div>
+    <div class="price">0.75 NGN</div>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <div class="img-wrap">
+      <img src="items/candle_2.png" alt="Candles">
+    </div>
+    <div class="title">Handmade Candles</div>
+    <div class="desc">Aromatic handmade candles that create a warm, relaxing atmosphere.</div>
+    <div class="rating">★★★★★</div>
+    <div class="price">4.36 NGN</div>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <div class="img-wrap">
+      <img src="items/basket_1.png" alt="Gift Baskets">
+    </div>
+    <div class="title">Delicious Gift Baskets</div>
+    <div class="desc">Carefully curated gift baskets filled with delightful treats.</div>
+    <div class="rating">★★★★☆</div>
+    <div class="price">3.54 NGN</div>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <div class="img-wrap">
+      <img src="items/perfume_3.png" alt="Perfumes">
+    </div>
+    <div class="title">Luxury Perfumes & Fragrances</div>
+    <div class="desc">Premium fragrances crafted to leave a lasting impression.</div>
+    <div class="rating">★★★★★</div>
+    <div class="price">6.26 NGN</div>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+</div>
+
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <h2>Bestsellers in Gift Items</h2>
+      <a href="#">View All</a>
+    </div>
+
+    <div class="grid">
+  <div class="card">
+    <div class="img-wrap">
+      <img src="items/basket_2.png" alt="Gift Baskets">
+    </div>
+    <div class="title">Delicious Gift Baskets</div>
+    <div class="rating">★★★★☆</div>
+    <div class="price">2.40 NGN</div>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <div class="img-wrap">
+      <img src="items/basket_3.png" alt="Gift Baskets">
+    </div>
+    <div class="title">Delicious Gift Baskets</div>
+    <div class="rating">★★★★☆</div>
+    <div class="price">0.75 NGN</div>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <div class="img-wrap">
+      <img src="items/basket_4.png" alt="Gift Baskets">
+    </div>
+    <div class="title">Delicious Gift Baskets</div>
+    <div class="rating">★★★★☆</div>
+    <div class="price">2.40 NGN</div>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <div class="img-wrap">
+      <img src="items/basket_5.png" alt="Gift Baskets">
+    </div>
+    <div class="title">Delicious Gift Baskets</div>
+    <div class="rating">★★★★☆</div>
+    <div class="price">0.75 NGN</div>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <div class="img-wrap">
+      <img src="items/basket_6.png" alt="Gift Baskets">
+    </div>
+    <div class="title">Delicious Gift Baskets</div>
+    <div class="rating">★★★★★</div>
+    <div class="price">4.36 NGN</div>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <div class="img-wrap">
+      <img src="items/basket_7.png" alt="Gift Baskets">
+    </div>
+    <div class="title">Delicious Gift Baskets</div>
+    <div class="rating">★★★★☆</div>
+    <div class="price">3.54 NGN</div>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <div class="img-wrap">
+      <img src="items/basket_8.png" alt="Gift Baskets">
+    </div>
+    <div class="title">Delicious Gift Baskets</div>
+    <div class="rating">★★★★★</div>
+    <div class="price">6.26 NGN</div>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <div class="img-wrap">
+      <img src="items/basket_9.png" alt="Gift Baskets">
+    </div>
+    <div class="title">Delicious Gift Baskets</div>
+    <div class="rating">★★★★★</div>
+    <div class="price">6.26 NGN</div>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+</div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <h2>Bestsellers in Car Keys</h2>
+      <a href="#">View All</a>
+    </div>
+
+    <div class="grid">
+  <div class="card">
+    <div class="img-wrap">
+      <img src="items/carkey_2.png" alt="Car Keys">
+    </div>
+    <div class="title">Delicious Gift Baskets</div>
+    <div class="rating">★★★★☆</div>
+    <div class="price">2.40 NGN</div>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <div class="img-wrap">
+      <img src="items/carkey_3.png" alt="Car Keys">
+    </div>
+    <div class="title">Delicious Gift Baskets</div>
+    <div class="rating">★★★★☆</div>
+    <div class="price">0.75 NGN</div>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <div class="img-wrap">
+      <img src="items/carkey_4.png" alt="Car Keys">
+    </div>
+    <div class="title">Delicious Gift Baskets</div>
+    <div class="rating">★★★★☆</div>
+    <div class="price">2.40 NGN</div>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <div class="img-wrap">
+      <img src="items/carkey_5.png" alt="Car Keys">
+    </div>
+    <div class="title">Delicious Gift Baskets</div>
+    <div class="rating">★★★★☆</div>
+    <div class="price">0.75 NGN</div>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <div class="img-wrap">
+      <img src="items/carkey_6.png" alt="Car Keys">
+    </div>
+    <div class="title">Delicious Gift Baskets</div>
+    <div class="rating">★★★★★</div>
+    <div class="price">4.36 NGN</div>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <div class="img-wrap">
+      <img src="items/carkey_7.png" alt="Car Keys">
+    </div>
+    <div class="title">Delicious Gift Baskets</div>
+    <div class="rating">★★★★☆</div>
+    <div class="price">3.54 NGN</div>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <div class="img-wrap">
+      <img src="items/carkey_8.png" alt="Car Keys">
+    </div>
+    <div class="title">Delicious Gift Baskets</div>
+    <div class="rating">★★★★★</div>
+    <div class="price">6.26 NGN</div>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <div class="img-wrap">
+      <img src="items/carkey_9.png" alt="Car Keys">
+    </div>
+    <div class="title">Delicious Gift Baskets</div>
+    <div class="rating">★★★★★</div>
+    <div class="price">6.26 NGN</div>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+</div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-features">
+    <div class="feature">
+      <img src="images/store.png" alt="">
+      <div>
+        <strong>Free in-store pick up</strong>
+        <span>24/7 Amazing services</span>
+      </div>
+    </div>
+
+    <div class="feature">
+      <img src="images/shipping.png" alt="">
+      <div>
+        <strong>Free Shipping</strong>
+        <span>24/7 Amazing services</span>
+      </div>
+    </div>
+
+    <div class="feature">
+      <img src="images/payment.png" alt="">
+      <div>
+        <strong>Flexible Payment</strong>
+        <span>24/7 Amazing services</span>
+      </div>
+    </div>
+
+    <div class="feature">
+      <img src="images/help.png" alt="">
+      <div>
+        <strong>Convenient help</strong>
+        <span>24/7 Amazing services</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-grid">
+    <div>
+      <h4>About ToolzPro</h4>
+      <a href="#">Company info</a>
+      <a href="#">News</a>
+      <a href="#">Careers</a>
+      <a href="#">Investors</a>
+      <a href="#">Policies & Rules</a>
+    </div>
+
+    <div>
+      <h4>Order & Purchases</h4>
+      <a href="#">Check order status</a>
+      <a href="#">Shipping & Delivery</a>
+      <a href="#">Returns & Exchanges</a>
+      <a href="#">Track order</a>
+      <a href="#">Gift cards</a>
+    </div>
+
+    <div>
+      <h4>Popular Categories</h4>
+      <a href="#">eSIMs Activations</a>
+      <a href="#">Hustle Updates</a>
+      <a href="#">Gift Items</a>
+      <a href="#">Digital Tools & FMT</a>
+      <a href="#">Logistics Services</a>
+    </div>
+
+    <div>
+      <h4>Support & Services</h4>
+      <a href="#">Contact us</a>
+      <a href="#">Help Center</a>
+      <a href="#">Warranty</a>
+      <a href="#">Money Back Guarantee</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="payments">
+      <span>Payment methods</span>
+      <img src="images/visa.png">
+      <img src="images/Mastercard-Logo.png">
+      <img src="images/bitcoin.png">
+      <img src="images/paypal.png">
+    </div>
+
+    <div class="social">
+      <span>Stay Connected</span>
+      <img src="images/facebook_black.png">
+      <img src="images/twitter _black.png">
+      <img src="images/instagram_black.png">
+      <img src="images/whatsapp_black.png">
+      <img src="images/gmail_black.png">
+    </div>
+  </div>
+
+  <div class="footer-copy">
+    © 2026 ToolzPro. All Rights Reserved.
+  </div>
+</footer>
+
+<div id="successPopup" class="success-popup">
+  <img src="images/green_check.png" alt="Status" />
+  <span id="popupMessage"></span>
+  <button class="close-btn" aria-label="Close">&times;</button>
+</div>
+
+
+<script>
+const header = document.querySelector('.main-header');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 10) {
+    header.style.boxShadow = '0 8px 20px rgba(0,0,0,0.08)';
+  } else {
+    header.style.boxShadow = 'none';
+  }
+});
+</script>
+
+<script>
+/* ================= SEARCH BAR + FILTER + POPUP ================= */
+
+const searchBar = document.querySelector('.search-bar');
+const searchInput = searchBar.querySelector('input');
+const suggestionsBox = document.querySelector('.search-suggestions');
+const cards = document.querySelectorAll('.card');
+
+const products = [
+  { name: "Teddy Bear", category: "Gifts" },
+  { name: "Car Key", category: "Accessories" },
+  { name: "Custom Photo Frames", category: "Home Decor" },
+  { name: "Personalized Jewelry", category: "Jewelry" },
+  { name: "Handmade Candles", category: "Home Decor" },
+  { name: "Gift Baskets", category: "Gifts" },
+  { name: "Luxury Perfumes & Fragrances", category: "Perfume" }
+];
+
+/* ---------- Mobile expand ---------- */
+searchBar.addEventListener('click', () => {
+  if (window.innerWidth <= 768) {
+    searchBar.classList.add('active');
+    searchInput.focus();
+  }
+});
+
+/* ---------- Live suggestions ---------- */
+searchInput.addEventListener('input', () => {
+  const value = searchInput.value.toLowerCase().trim();
+  suggestionsBox.innerHTML = "";
+
+  if (!value) {
+    suggestionsBox.classList.remove('active');
+    showAllCards();
+    return;
+  }
+
+  const matches = products.filter(p =>
+    p.name.toLowerCase().includes(value)
+  );
+
+  if (matches.length === 0) {
+    suggestionsBox.innerHTML = `
+      <div class="search-item">No results found</div>
+    `;
+  } else {
+    matches.forEach(item => {
+      suggestionsBox.innerHTML += `
+        <div class="search-item">
+          ${item.name}
+          <small>${item.category}</small>
+        </div>
+      `;
+    });
+  }
+
+  suggestionsBox.classList.add('active');
+});
+
+/* ---------- Click suggestion ---------- */
+suggestionsBox.addEventListener('click', (e) => {
+  const item = e.target.closest('.search-item');
+  if (!item) return;
+
+  searchInput.value = item.childNodes[0].textContent.trim();
+  suggestionsBox.classList.remove('active');
+  runSearch(searchInput.value);
+});
+
+/* ---------- Enter key ---------- */
+searchInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    runSearch(searchInput.value.trim());
+  }
+});
+
+/* ---------- Search logic ---------- */
+function runSearch(query) {
+  if (!query) {
+    showPopup("Please enter a search term", true);
+    return;
+  }
+
+  searchBar.classList.add('loading');
+  suggestionsBox.classList.remove('active');
+
+  setTimeout(() => {
+    searchBar.classList.remove('loading');
+
+    let found = false;
+
+    cards.forEach(card => {
+      const title = card.querySelector('.title').textContent.toLowerCase();
+
+      if (title.includes(query.toLowerCase())) {
+        card.style.display = "block";
+        found = true;
+      } else {
+        card.style.display = "none";
+      }
+    });
+
+    if (!found) {
+      showPopup(`No results found for "${query}"`, true);
+    } else {
+      showPopup(`Showing results for "${query}"`);
+    }
+
+  }, 600);
+}
+
+/* ---------- Show all cards ---------- */
+function showAllCards() {
+  cards.forEach(card => {
+    card.style.display = "block";
+  });
+}
+
+/* ---------- Outside click ---------- */
+document.addEventListener('click', (e) => {
+  if (!searchBar.contains(e.target)) {
+    suggestionsBox.classList.remove('active');
+
+    if (window.innerWidth <= 768) {
+      searchBar.classList.remove('active');
+    }
+  }
+});
+</script>
+
+
+<script>
+const popup = document.getElementById('successPopup');
+const popupMessage = document.getElementById('popupMessage');
+const closeBtn = popup.querySelector('.close-btn');
+
+function showPopup(message, isError = false) {
+  popupMessage.textContent = message;
+
+  if (isError) {
+    popup.style.background = '#ffe4e6';
+    popup.style.border = '1px solid #f87171';
+    popup.style.color = '#b91c1c';
+    popup.querySelector('img').src = 'images/error.png';
+  } else {
+    popup.style.background = '#eafff4';
+    popup.style.border = '1px solid #86efac';
+    popup.style.color = '#166534';
+    popup.querySelector('img').src = 'images/green_check.png';
+  }
+
+  popup.classList.add('show');
+
+  setTimeout(() => {
+    popup.classList.remove('show');
+  }, 3000);
+}
+
+closeBtn.addEventListener('click', () => {
+  popup.classList.remove('show');
+});
+</script>
+
+<script>
+document.querySelectorAll('.brand-card, .promo').forEach(el => {
+  el.addEventListener('click', () => {
+    console.log('Navigate to store or promo');
+  });
+});
+</script>
+
+<script>
+const slides = document.querySelectorAll('.image-slider .slide');
+let current = 0;
+
+setInterval(() => {
+  slides[current].classList.remove('active');
+  current = (current + 1) % slides.length;
+  slides[current].classList.add('active');
+}, 3000);
+</script>
+
+
+<script>
+const track = document.querySelector('.categories-track');
+
+let scrollSpeed = 0.4;
+let autoScroll;
+let isPaused = false;
+
+// Duplicate items for infinite scroll
+track.innerHTML += track.innerHTML;
+
+function startAutoScroll() {
+  autoScroll = setInterval(() => {
+    if (!isPaused) {
+      track.scrollLeft += scrollSpeed;
+
+      // Reset when halfway
+      if (track.scrollLeft >= track.scrollWidth / 2) {
+        track.scrollLeft = 0;
+      }
+    }
+  }, 16); // ~60fps
+}
+
+startAutoScroll();
+
+// Pause on interaction
+track.addEventListener('mouseenter', () => isPaused = true);
+track.addEventListener('mouseleave', () => isPaused = false);
+track.addEventListener('touchstart', () => isPaused = true);
+track.addEventListener('touchend', () => isPaused = false);
+</script>
+
+<script>
+  // subtle fade-in when footer enters viewport
+  const footer = document.querySelector('.footer');
+
+  const observer = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      footer.style.opacity = 1;
+      footer.style.transform = 'translateY(0)';
+    }
+  }, { threshold: 0.2 });
+
+  footer.style.opacity = 0;
+  footer.style.transform = 'translateY(20px)';
+  footer.style.transition = '0.6s ease';
+
+  observer.observe(footer);
+</script>
+
+</body>
+</html>
